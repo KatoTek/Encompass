@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>KatoTek.$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/KatoTek/Encompass/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/KatoTek/Encompass</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright KatoTek 2015</copyright>
+    <tags>ASP.NET MVC</tags>
+	<dependencies>
+	  <dependency id="Antlr" version="3.5.0.2" />
+	  <dependency id="BundleMinifyInlineJsCss" version="1.0.1" />
+	  <dependency id="Microsoft.AspNet.Mvc" version="5.2.3" />
+	  <dependency id="Microsoft.AspNet.Razor" version="3.2.3" />
+	  <dependency id="Microsoft.AspNet.WebPages" version="3.2.3" />
+	  <dependency id="Microsoft.Web.Infrastructure" version="1.0.0" />
+	  <dependency id="Newtonsoft.Json" version="7.0.1" />
+	  <dependency id="Newtonsoft.JsonResult" version="1.0.5369.19229" />
+	  <dependency id="WebGrease" version="1.6.0" />
+	</dependencies>
+  </metadata>
+</package>
