@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.MatchSync", "Encompass.MatchSync\Encompass.MatchSync.csproj", "{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Simple", "Encompass.Simple\Encompass.Simple.csproj", "{3543C534-699E-48C6-987E-AD02A604F207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Concepts", "Encompass.Concepts\Encompass.Concepts.csproj", "{27A2EC1A-CE81-4E49-B43B-287AA124E46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Mvc", "Encompass.Mvc\Encompass.Mvc.csproj", "{916C77E9-8212-4449-B3A2-9BF090760EC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Membership", "Encompass.Membership\Encompass.Membership.csproj", "{581699AC-0ED6-46E2-B192-32EFAADD8015}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{97F63D50-0BCC-4A9C-AE61-F959E001A4B6}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.AutoMapper", "Encompass.AutoMapper\Encompass.AutoMapper.csproj", "{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Encompass.Docs", "Encompass.Docs\Encompass.Docs.shfbproj", "{F6580EA0-44C7-4494-AB78-6C1D0E04E5D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3543C534-699E-48C6-987E-AD02A604F207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3543C534-699E-48C6-987E-AD02A604F207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3543C534-699E-48C6-987E-AD02A604F207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3543C534-699E-48C6-987E-AD02A604F207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A2EC1A-CE81-4E49-B43B-287AA124E46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A2EC1A-CE81-4E49-B43B-287AA124E46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A2EC1A-CE81-4E49-B43B-287AA124E46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A2EC1A-CE81-4E49-B43B-287AA124E46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{916C77E9-8212-4449-B3A2-9BF090760EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{916C77E9-8212-4449-B3A2-9BF090760EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{916C77E9-8212-4449-B3A2-9BF090760EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{916C77E9-8212-4449-B3A2-9BF090760EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{581699AC-0ED6-46E2-B192-32EFAADD8015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{581699AC-0ED6-46E2-B192-32EFAADD8015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{581699AC-0ED6-46E2-B192-32EFAADD8015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{581699AC-0ED6-46E2-B192-32EFAADD8015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6580EA0-44C7-4494-AB78-6C1D0E04E5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6580EA0-44C7-4494-AB78-6C1D0E04E5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

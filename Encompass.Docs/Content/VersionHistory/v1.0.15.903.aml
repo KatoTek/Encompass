@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="55287d86-80a9-4615-b521-0f3565a080d9" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 1.0.15.903 was released on 9/3/2015.
+			</para>
+		</introduction>
+		<section>
+			<title>Changes in This Release</title>
+			<content>
+				<list class="bullet">
+					<listItem>
+						<para>Initial documentation</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+		<relatedTopics>
+			<link xlink:href="f5a62a76-fa3d-4701-a787-9381f17fd55c" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="2c298454-cde6-445b-99fc-df112d87262a" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Encompass is a code library intended to simplify common tasks and reduce code redundency. The solution contains a number of assemblies, each with its own primary focus.</para>
+		</introduction>
+		<section>
+			<title>Assemblies</title>
+			<content>
+				<para>The following assemblies are included in Encompass:</para>
+				<list class="bullet">
+					<listItem>
+						<para>
+              <legacyBold>Encompass.AutoMapper</legacyBold> - Provides helpers when using AutoMapper within an application.
+            </para>
+					</listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.Concepts</legacyBold> - Provides a number of reusable concepts that are often used in applications.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.INotify</legacyBold> - A set of classes for mapping property dependencies that implements INotifyPropertyChanged for ViewModel inheritance used in WPF.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.MatchSync</legacyBold> - A library focused on making it easier to keep collections of items in sync.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.Membership</legacyBold> - A library that extends ASP.NET Membership Provider.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.Mvc</legacyBold> - A library that extends the System.Web.Mvc libraries.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.Silverlight.INotify</legacyBold> - A set of classes for mapping property dependencies that implements INotifyPropertyChanged for ViewModel inheritance used in Silverlight.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Encompass.Simple</legacyBold> - A library focused on simplifying code and improving the readability of code.
+            </para>
+          </listItem>
+				</list>
+			</content>
+		</section>
+    <relatedTopics>
+      <link xlink:href="f5a62a76-fa3d-4701-a787-9381f17fd55c" />
+    </relatedTopics>
+	</developerConceptualDocument>
+</topic>

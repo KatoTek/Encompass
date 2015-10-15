@@ -1,0 +1,30 @@
+﻿html {
+    font-family: 'Segoe UI', Verdana, Helvetica, Sans-Serif;
+}
+
+body {
+    font-family: 'Segoe UI', Verdana, Helvetica, Sans-Serif;
+}
+
+.Encompass_Simple_Format_ExceptionType {
+    background-color: #808080;
+    color: white;
+    font-size: 1.5em;
+}
+
+.Encompass_Simple_Format_MessageLabel,
+.Encompass_Simple_Format_SourceLabel,
+.Encompass_Simple_Format_StackTraceLabel,
+.Encompass_Simple_Format_InnerExceptionLabel {
+    background-color: #A9A9A9;
+}
+
+.Encompass_Simple_Format_Message,
+.Encompass_Simple_Format_StackTrace {
+    background-color: #D3D3D3;
+}
+
+.Encompass_Simple_Format_Source,
+.Encompass_Simple_Format_InnerException {
+    background-color: #ffffff;
+}
