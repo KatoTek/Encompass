@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <licenseUrl>https://github.com/KatoTek/Encompass/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/KatoTek/Encompass</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
