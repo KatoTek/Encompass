@@ -45,6 +45,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Encompass.Simple, Version=7.4.15.1015, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KatoTek.Encompass.Simple.7.4.15.1015\lib\net40\Encompass.Simple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -89,10 +93,7 @@
     <EmbeddedResource Include="Mail\Exception.css" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Encompass.Simple\Encompass.Simple.csproj">
-      <Project>{3543c534-699e-48c6-987e-ad02a604f207}</Project>
-      <Name>Encompass.Simple</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
