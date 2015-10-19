@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using static System.String;
 using static System.Text.RegularExpressions.Regex;
@@ -230,6 +231,28 @@ namespace Encompass.Simple
         /// <param name="returnValue">The Int32 value of the parsed string.</param>
         /// <returns>True if can be parsed to a Int32.</returns>
         public static bool Integer(string value, out int returnValue) => int.TryParse(value, out returnValue);
+
+        /// <summary>
+        /// Checks if a string is a valid IPv4 address.
+        /// </summary>
+        /// <param name="value">The string to check.</param>
+        /// <returns>True when IPv4</returns>
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        public static bool IPv4(string value)
+        {
+            var quads = value.Split('.');
+            if (quads.Length != 4)
+                return false;
+
+            foreach (var quad in quads)
+            {
+                int q;
+                if (!int.TryParse(quad, out q) || !q.ToString().Length.Equals(quad.Length) || q < 0 || q > 255)
+                    return false;
+            }
+
+            return true;
+        }
 
         /// <summary>
         /// Checks if a string can be parsed to a Int64.

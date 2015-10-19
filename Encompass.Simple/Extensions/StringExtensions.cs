@@ -234,6 +234,10 @@ namespace Encompass.Simple.Extensions
         /// <param name="value"><inheritdoc cref="Is.Integer(string, out int)" select="/param[@name='returnValue']/node()"/></param>
         public static bool IsInteger(this string source, out int value) => Integer(source, out value);
 
+        /// <inheritdoc cref="Is.IPv4(string)"/>
+        /// <param name="source"><inheritdoc cref="Is.IPv4(string)" select="/param[@name='value']/node()"/></param>
+        public static bool IsIPv4(this string source) => IPv4(source);
+
         /// <inheritdoc cref="Is.Long(string)"/>
         /// <param name="source"><inheritdoc cref="Is.Long(string)" select="/param[@name='value']/node()"/></param>
         public static bool IsLong(this string source) => Long(source);
