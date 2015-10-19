@@ -5,5 +5,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Class Library of Simple Things")]
 [assembly: ComVisible(false)]
 [assembly: Guid("a47ed8d7-1aa2-4bc1-8458-4992f691026a")]
-[assembly: AssemblyVersion("7.5.15.1019")]
-[assembly: AssemblyFileVersion("7.5.15.1019")]
+[assembly: AssemblyVersion("7.6.15.1019")]
+[assembly: AssemblyFileVersion("7.6.15.1019")]

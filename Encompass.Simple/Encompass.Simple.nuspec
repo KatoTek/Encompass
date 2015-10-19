@@ -11,7 +11,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>improved null check for IPv4</releaseNotes>
     <copyright>Copyright KatoTek 2015</copyright>
     <tags>Custom</tags>
   </metadata>

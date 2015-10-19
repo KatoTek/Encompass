@@ -240,8 +240,8 @@ namespace Encompass.Simple
         [SuppressMessage("ReSharper", "InconsistentNaming")]
         public static bool IPv4(string value)
         {
-            var quads = value.Split('.');
-            if (quads.Length != 4)
+            var quads = value?.Split('.');
+            if (quads?.Length != 4)
                 return false;
 
             foreach (var quad in quads)
