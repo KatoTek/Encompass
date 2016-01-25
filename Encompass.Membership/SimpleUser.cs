@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Profile;
 using System.Web.Security;
+using Encompass.Membership.Interfaces;
 using static System.Web.Security.Membership;
 
 #pragma warning disable 1591
@@ -10,7 +11,7 @@ namespace Encompass.Membership
     /// <summary>
     /// A object that simplifies working with Membership Provider users and profiles
     /// </summary>
-    public class SimpleUser
+    public class SimpleUser : ISimpleUser
     {
         public SimpleUser() {}
 
