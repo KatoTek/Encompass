@@ -33,7 +33,7 @@ namespace Encompass.Membership.Extensions
         {
             var membershipUser = SWS.Membership.GetUser(iPrincipal.Identity.Name);
 
-            return membershipUser != null ? (T) Activator.CreateInstance(typeof (T), new {membershipUser}) : default(T);
+            return membershipUser != null ? (T) Activator.CreateInstance(typeof (T), membershipUser) : default(T);
         }
 
         /// <summary>
