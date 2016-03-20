@@ -4,12 +4,18 @@ using Encompass.Concepts.DateRanges;
 namespace Encompass.Concepts.Dates
 {
     /// <summary>
-    /// Object that represents the difference between two DateTimes
+    ///     Object that represents the difference between two DateTimes
     /// </summary>
     public class DateDifference
     {
+        #region fields
+
         private readonly DateTime _earlier;
         private readonly DateTime _later;
+
+        #endregion
+
+        #region constructors
 
         /// <param name="date1">The first date</param>
         /// <param name="date2">The second date</param>
@@ -63,9 +69,15 @@ namespace Encompass.Concepts.Dates
                 throw new ArgumentException($"End date must be greater than {dateRange.Start:F}", nameof(dateRange));
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// The number of months between the first date and the second date
+        ///     The number of months between the first date and the second date
         /// </summary>
-        public int Months => (_later.Month - _earlier.Month) + 12*(_later.Year - _earlier.Year);
+        public int Months => _later.Month - _earlier.Month + 12*(_later.Year - _earlier.Year);
+
+        #endregion
     }
 }

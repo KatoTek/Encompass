@@ -8,10 +8,12 @@ using static System.Environment;
 namespace Encompass.Mvc.Exceptions
 {
     /// <summary>
-    /// Represents an unhandled exception in MVC
+    ///     Represents an unhandled exception in MVC
     /// </summary>
     public class MvcUnhandledException : Exception
     {
+        #region constructors
+
         /// <param name="routeData">Encapsulated information about the route.</param>
         public MvcUnhandledException(RouteData routeData)
             : base(GetRouteDataMessage(routeData))
@@ -29,7 +31,10 @@ namespace Encompass.Mvc.Exceptions
 
         /// <param name="routeData">Encapsulated information about the route.</param>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        /// <param name="innerException">
+        ///     The exception that is the cause of the current exception, or a null reference (Nothing in
+        ///     Visual Basic) if no inner exception is specified.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, string message, Exception innerException)
             : base(GetRouteDataMessage(routeData, message), innerException)
         {
@@ -37,7 +42,10 @@ namespace Encompass.Mvc.Exceptions
         }
 
         /// <param name="routeData">Encapsulated information about the route.</param>
-        /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        /// <param name="innerException">
+        ///     The exception that is the cause of the current exception, or a null reference (Nothing in
+        ///     Visual Basic) if no inner exception is specified.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, Exception innerException)
             : base(GetRouteDataMessage(routeData), innerException)
         {
@@ -45,8 +53,14 @@ namespace Encompass.Mvc.Exceptions
         }
 
         /// <param name="routeData">Encapsulated information about the route.</param>
-        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        /// <param name="info">
+        ///     The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object
+        ///     data about the exception being thrown.
+        /// </param>
+        /// <param name="context">
+        ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
+        ///     information about the source or destination.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
@@ -73,7 +87,10 @@ namespace Encompass.Mvc.Exceptions
         /// <param name="routeData">Encapsulated information about the route.</param>
         /// <param name="user">The user that caused the exception.</param>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        /// <param name="innerException">
+        ///     The exception that is the cause of the current exception, or a null reference (Nothing in
+        ///     Visual Basic) if no inner exception is specified.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, IPrincipal user, string message, Exception innerException)
             : base(GetRouteDataMessage(routeData, user, message), innerException)
         {
@@ -82,7 +99,10 @@ namespace Encompass.Mvc.Exceptions
 
         /// <param name="routeData">Encapsulated information about the route.</param>
         /// <param name="user">The user that caused the exception.</param>
-        /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        /// <param name="innerException">
+        ///     The exception that is the cause of the current exception, or a null reference (Nothing in
+        ///     Visual Basic) if no inner exception is specified.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, IPrincipal user, Exception innerException)
             : base(GetRouteDataMessage(routeData, user), innerException)
         {
@@ -91,41 +111,55 @@ namespace Encompass.Mvc.Exceptions
 
         /// <param name="routeData">Encapsulated information about the route.</param>
         /// <param name="user">The user that caused the exception.</param>
-        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        /// <param name="info">
+        ///     The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object
+        ///     data about the exception being thrown.
+        /// </param>
+        /// <param name="context">
+        ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
+        ///     information about the source or destination.
+        /// </param>
         public MvcUnhandledException(RouteData routeData, IPrincipal user, SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             SetProperties(routeData, user);
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// The Action from the route data.
+        ///     The Action from the route data.
         /// </summary>
         public string Action { get; set; }
 
         /// <summary>
-        /// The Area from the route data.
+        ///     The Area from the route data.
         /// </summary>
         public string Area { get; set; }
 
         /// <summary>
-        /// The Controller from the route data.
+        ///     The Controller from the route data.
         /// </summary>
         public string Controller { get; set; }
 
         /// <summary>
-        /// The Id from the route data.
+        ///     The Id from the route data.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// The current user using the system.
+        ///     The current user using the system.
         /// </summary>
         public string User { get; set; }
 
+        #endregion
+
+        #region methods
+
         /// <summary>
-        /// Formats the information about that route that threw an exception.
+        ///     Formats the information about that route that threw an exception.
         /// </summary>
         /// <param name="routeData">Encapsulated information about the route.</param>
         /// <param name="user">The user that caused the exception.</param>
@@ -205,5 +239,7 @@ namespace Encompass.Mvc.Exceptions
             if (user != null)
                 User = user.Identity.Name;
         }
+
+        #endregion
     }
 }

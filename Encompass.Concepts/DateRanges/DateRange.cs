@@ -5,10 +5,12 @@
 namespace Encompass.Concepts.DateRanges
 {
     /// <summary>
-    /// Object that represents a date range
+    ///     Object that represents a date range
     /// </summary>
     public class DateRange : IDateRange
     {
+        #region constructors
+
         public DateRange()
         {
             var now = DateTime.Now;
@@ -24,15 +26,21 @@ namespace Encompass.Concepts.DateRanges
             End = end;
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// The end date of the date range
+        ///     The end date of the date range
         /// </summary>
         public DateTime End { get; set; }
 
         /// <summary>
-        /// The start date of the date range
+        ///     The start date of the date range
         /// </summary>
         public DateTime Start { get; set; }
+
+        #endregion
     }
 }
 

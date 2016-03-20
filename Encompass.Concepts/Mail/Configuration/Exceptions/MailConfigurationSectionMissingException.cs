@@ -5,11 +5,17 @@ using static System.String;
 namespace Encompass.Concepts.Mail.Configuration.Exceptions
 {
     /// <summary>
-    /// Exception type for a missing mail configuration section
+    ///     Exception type for a missing mail configuration section
     /// </summary>
     public class MailConfigurationSectionMissingException : Exception
     {
+        #region fields
+
         private const string DEFAULT_MESSAGE_FORMAT = "Configuration section \"{0}\" is either missing or corrupt";
+
+        #endregion
+
+        #region constructors
 
         /// <param name="section">The name of the section that is missing</param>
         public MailConfigurationSectionMissingException(string section)
@@ -44,17 +50,29 @@ namespace Encompass.Concepts.Mail.Configuration.Exceptions
         }
 
         /// <param name="section">The name of the section that is missing</param>
-        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown</param>
-        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination</param>
+        /// <param name="info">
+        ///     The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object
+        ///     data about the exception being thrown
+        /// </param>
+        /// <param name="context">
+        ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
+        ///     information about the source or destination
+        /// </param>
         public MailConfigurationSectionMissingException(string section, SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             Section = section;
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// The name of the section that is missing
+        ///     The name of the section that is missing
         /// </summary>
         public string Section { get; set; }
+
+        #endregion
     }
 }

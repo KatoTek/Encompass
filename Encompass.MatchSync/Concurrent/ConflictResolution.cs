@@ -4,7 +4,7 @@
 namespace Encompass.MatchSync.Concurrent
 {
     /// <summary>
-    /// Defines the available conflict resoltuion types
+    ///     Defines the available conflict resoltuion types
     /// </summary>
     public enum ConflictResolution
     {

@@ -15,11 +15,17 @@ using static Newtonsoft.Json.JsonConvert;
 namespace Encompass.Mvc.Results
 {
     /// <summary>
-    /// Represents a JSON result with property names converted to camel case.
+    ///     Represents a JSON result with property names converted to camel case.
     /// </summary>
     public class JsonCamelCaseResult : ActionResult
     {
+        #region fields
+
         private const string DEFAULT_CONTENT_TYPE = "application/json";
+
+        #endregion
+
+        #region constructors
 
         public JsonCamelCaseResult()
         {
@@ -27,7 +33,7 @@ namespace Encompass.Mvc.Results
             Formatting = None;
         }
 
-        /// <param name="jsonResult">The <see cref="JsonResult"/> to convert to a <see cref="JsonCamelCaseResult"/>.</param>
+        /// <param name="jsonResult">The <see cref="JsonResult" /> to convert to a <see cref="JsonCamelCaseResult" />.</param>
         public JsonCamelCaseResult(JsonResult jsonResult)
         {
             ContentEncoding = jsonResult.ContentEncoding;
@@ -37,35 +43,46 @@ namespace Encompass.Mvc.Results
             JsonRequestBehavior = jsonResult.JsonRequestBehavior;
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// The content encoding.
+        ///     The content encoding.
         /// </summary>
         public Encoding ContentEncoding { get; set; }
 
         /// <summary>
-        /// The content type.
+        ///     The content type.
         /// </summary>
         public string ContentType { get; set; }
 
         /// <summary>
-        /// The data.
+        ///     The data.
         /// </summary>
         public object Data { get; set; }
 
         /// <summary>
-        /// The formatting options.
+        ///     The formatting options.
         /// </summary>
         public Formatting Formatting { get; set; }
 
         /// <summary>
-        /// Specifies whether HTTP GET requests from the client are allowed.
+        ///     Specifies whether HTTP GET requests from the client are allowed.
         /// </summary>
         public JsonRequestBehavior JsonRequestBehavior { get; set; }
 
+        #endregion
+
+        #region methods
+
         /// <summary>
-        /// Serializes an object into JSON and camel cases the property names and returns that as the action result.
+        ///     Serializes an object into JSON and camel cases the property names and returns that as the action result.
         /// </summary>
-        /// <param name="context">The context in which the result is executed. The context information includes the controller, HTTP content, request context, and route data.</param>
+        /// <param name="context">
+        ///     The context in which the result is executed. The context information includes the controller,
+        ///     HTTP content, request context, and route data.
+        /// </param>
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)
@@ -78,7 +95,9 @@ namespace Encompass.Mvc.Results
             }
 
             var response = context.HttpContext.Response;
-            response.ContentType = !IsNullOrWhiteSpace(ContentType) ? ContentType : DEFAULT_CONTENT_TYPE;
+            response.ContentType = !IsNullOrWhiteSpace(ContentType)
+                                       ? ContentType
+                                       : DEFAULT_CONTENT_TYPE;
 
             if (ContentEncoding != null)
                 response.ContentEncoding = ContentEncoding;
@@ -91,6 +110,8 @@ namespace Encompass.Mvc.Results
 
             response.Write(SerializeObject(Data, Formatting, jsonSerializerSettings));
         }
+
+        #endregion
     }
 }
 

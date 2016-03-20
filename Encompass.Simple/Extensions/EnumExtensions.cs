@@ -3,12 +3,14 @@
 namespace Encompass.Simple.Extensions
 {
     /// <summary>
-    /// Enum extension methods
+    ///     Enum extension methods
     /// </summary>
     public static class EnumExtensions
     {
+        #region methods
+
         /// <summary>
-        /// Gets an attribute of a specified type from an enum value
+        ///     Gets an attribute of a specified type from an enum value
         /// </summary>
         /// <typeparam name="T">The Attribute type to get</typeparam>
         /// <param name="source">The enum value for which to get the attribute</param>
@@ -23,9 +25,11 @@ namespace Encompass.Simple.Extensions
 
             var attributes = memberInfo[0].GetCustomAttributes(typeof(T), false);
             if (attributes.Length > 0)
-                return ((T)attributes[0]);
+                return (T)attributes[0];
 
             return null;
         }
+
+        #endregion
     }
 }

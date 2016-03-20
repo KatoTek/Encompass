@@ -5,23 +5,33 @@
 namespace Encompass.MatchSync.Concurrent
 {
     /// <summary>
-    /// Token that is used to when performing a concurrent sync to uniquely identify instances
+    ///     Token that is used to when performing a concurrent sync to uniquely identify instances
     /// </summary>
     [Serializable]
     public class ConcurrencyToken
     {
+        #region constructors
+
         public ConcurrencyToken(string tokenId)
         {
             TokenId = tokenId;
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// A token used for identification
+        ///     A token used for identification
         /// </summary>
         public string TokenId { get; }
 
+        #endregion
+
+        #region methods
+
         /// <summary>
-        /// Determines if two ConcurrencyTokens equal each other
+        ///     Determines if two ConcurrencyTokens equal each other
         /// </summary>
         /// <param name="obj">A ConcurrencyToken to compare against</param>
         /// <returns>True if the ConcurrencyToken.TokenIds are equal, otherwise false</returns>
@@ -32,7 +42,7 @@ namespace Encompass.MatchSync.Concurrent
         }
 
         /// <summary>
-        /// Returns the hash code for a ConcurrencyToken.TokenId
+        ///     Returns the hash code for a ConcurrencyToken.TokenId
         /// </summary>
         /// <returns>The ConcurrencyToken.TokenId hash code</returns>
         public override int GetHashCode()
@@ -46,10 +56,12 @@ namespace Encompass.MatchSync.Concurrent
         }
 
         /// <summary>
-        /// Returns the ConcurrencyToken as a string
+        ///     Returns the ConcurrencyToken as a string
         /// </summary>
         /// <returns>The TokenId</returns>
         public override string ToString() => TokenId;
+
+        #endregion
     }
 }
 

@@ -9,10 +9,12 @@ using static System.Web.Security.Membership;
 namespace Encompass.Membership
 {
     /// <summary>
-    /// A object that simplifies working with Membership Provider users and profiles
+    ///     A object that simplifies working with Membership Provider users and profiles
     /// </summary>
     public class SimpleUser : ISimpleUser
     {
+        #region constructors
+
         public SimpleUser() {}
 
         /// <param name="user">The MembershipUser to convert to a SimpleUser</param>
@@ -31,23 +33,27 @@ namespace Encompass.Membership
             FullName = (string)Profile.GetPropertyValue("FullName");
         }
 
+        #endregion
+
+        #region properties
+
         /// <summary>
-        /// Email
+        ///     Email
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Full Name
+        ///     Full Name
         /// </summary>
         public string FullName { get; set; }
 
         /// <summary>
-        /// Last Activity Date
+        ///     Last Activity Date
         /// </summary>
         public DateTime LastActivityDate { get; set; }
 
         /// <summary>
-        /// <see cref="MembershipUser"/> representation of the current <see cref="SimpleUser"/>
+        ///     <see cref="MembershipUser" /> representation of the current <see cref="SimpleUser" />
         /// </summary>
         public MembershipUser MembershipUser
         {
@@ -62,19 +68,21 @@ namespace Encompass.Membership
         }
 
         /// <summary>
-        /// A reference to the user's profile
+        ///     A reference to the user's profile
         /// </summary>
         public ProfileBase Profile { get; set; } = new ProfileBase();
 
         /// <summary>
-        /// UserId
+        ///     UserId
         /// </summary>
         public Guid UserId { get; set; }
 
         /// <summary>
-        /// Username
+        ///     Username
         /// </summary>
         public string Username { get; set; }
+
+        #endregion
     }
 }
 

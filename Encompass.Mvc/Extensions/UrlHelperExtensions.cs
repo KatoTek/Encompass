@@ -5,12 +5,14 @@ using static System.Web.Mvc.UrlHelper;
 namespace Encompass.Mvc.Extensions
 {
     /// <summary>
-    /// <see cref="UrlHelper"/> extension methods.
+    ///     <see cref="UrlHelper" /> extension methods.
     /// </summary>
     public static class UrlHelperExtensions
     {
+        #region methods
+
         /// <summary>
-        /// Generates an action based on the provided route information.
+        ///     Generates an action based on the provided route information.
         /// </summary>
         /// <param name="url">The UrlHelper to use.</param>
         /// <param name="action">The action name.</param>
@@ -30,5 +32,7 @@ namespace Encompass.Mvc.Extensions
                             routeCollection: url.RouteCollection,
                             requestContext: url.RequestContext,
                             includeImplicitMvcValues: true);
+
+        #endregion
     }
 }

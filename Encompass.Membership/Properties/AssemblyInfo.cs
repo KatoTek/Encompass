@@ -5,5 +5,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Class library for extending Membership Provider")]
 [assembly: ComVisible(false)]
 [assembly: Guid("fe785968-86d2-4ee6-8f5b-5d5514ef4294")]
-[assembly: AssemblyVersion("1.6.16.126")]
-[assembly: AssemblyFileVersion("1.6.16.126")]
+[assembly: AssemblyVersion("1.7.16.319")]
+[assembly: AssemblyFileVersion("1.7.16.319")]

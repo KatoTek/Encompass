@@ -4,7 +4,7 @@
 namespace Encompass.MatchSync
 {
     /// <summary>
-    /// Defines the available results when syncing IMatch objects
+    ///     Defines the available results when syncing IMatch objects
     /// </summary>
     public enum SyncResult
     {

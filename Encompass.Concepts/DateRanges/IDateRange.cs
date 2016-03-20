@@ -3,18 +3,22 @@
 namespace Encompass.Concepts.DateRanges
 {
     /// <summary>
-    /// Defines the contract for a date range
+    ///     Defines the contract for a date range
     /// </summary>
     public interface IDateRange
     {
+        #region properties
+
         /// <summary>
-        /// The end date of the date range
+        ///     The end date of the date range
         /// </summary>
         DateTime End { get; set; }
 
         /// <summary>
-        /// The start date of the date range
+        ///     The start date of the date range
         /// </summary>
         DateTime Start { get; set; }
+
+        #endregion
     }
 }

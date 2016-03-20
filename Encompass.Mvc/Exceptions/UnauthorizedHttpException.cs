@@ -6,11 +6,14 @@ using static System.String;
 namespace Encompass.Mvc.Exceptions
 {
     /// <summary>
-    /// Extends <see cref="HttpException"/> which describes an exception that occurred during the processing of HTTP requests.
-    /// This exception is specifically designated to be used when a user in not authorized for the request.
+    ///     Extends <see cref="HttpException" /> which describes an exception that occurred during the processing of HTTP
+    ///     requests.
+    ///     This exception is specifically designated to be used when a user in not authorized for the request.
     /// </summary>
     public class UnauthorizedHttpException : HttpException
     {
+        #region constructors
+
         public UnauthorizedHttpException()
             : base(403, "You do not have the required authorization.") {}
 
@@ -26,6 +29,8 @@ namespace Encompass.Mvc.Exceptions
         /// <param name="missingRoles">The roles that are required and the user is not assigned to.</param>
         public UnauthorizedHttpException(int httpCode, params string[] missingRoles)
             : base(httpCode, $"You do not have the required role(s) '{Join(", ", missingRoles)}'.") {}
+
+        #endregion
     }
 }
 

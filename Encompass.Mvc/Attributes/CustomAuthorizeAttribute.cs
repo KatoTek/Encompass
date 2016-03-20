@@ -7,15 +7,18 @@ using static System.String;
 namespace Encompass.Mvc.Attributes
 {
     /// <summary>
-    /// Extends <see cref="AuthorizeAttribute"/> which specifies that access to a controller or action method is restricted to users who meet the authorization requirement.
+    ///     Extends <see cref="AuthorizeAttribute" /> which specifies that access to a controller or action method is
+    ///     restricted to users who meet the authorization requirement.
     /// </summary>
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
+        #region constructors
+
         public CustomAuthorizeAttribute() {}
 
         /// <param name="roles">An array of role names for which to allow access.</param>
         /// <example>
-        /// <code>
+        ///     <code>
         /// <![CDATA[
         /// [CustomAuthorize("Admin,Manager")]
         /// ]]>
@@ -26,15 +29,24 @@ namespace Encompass.Mvc.Attributes
             Roles = Join(",", roles);
         }
 
+        #endregion
+
+        #region methods
+
         /// <summary>
-        /// Processes HTTP requests that fail authorization.
+        ///     Processes HTTP requests that fail authorization.
         /// </summary>
-        /// <param name="filterContext">Encapsulates the information for using <see cref="T:System.Web.Mvc.AuthorizeAttribute"/>.
-        /// The <paramref name="filterContext"/> object contains the controller, HTTP context, request context, action result, and route data.</param>
+        /// <param name="filterContext">
+        ///     Encapsulates the information for using <see cref="T:System.Web.Mvc.AuthorizeAttribute" />.
+        ///     The <paramref name="filterContext" /> object contains the controller, HTTP context, request context, action result,
+        ///     and route data.
+        /// </param>
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             throw new UnauthorizedHttpException(Roles);
         }
+
+        #endregion
     }
 }
 

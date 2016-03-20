@@ -11,12 +11,15 @@ using Encompass.Mvc.Models;
 namespace Encompass.Mvc.Attributes
 {
     /// <summary>
-    /// Extends <see cref="System.Web.Mvc.HandleErrorAttribute"/> which represents an attribute that is used to handle an exception that is thrown by an action method.
-    /// Adds support for custom exception logging and builds/returns the response based on the request type.<br/>
-    /// For standard requests, the application error <see cref="ViewResult"/> is returned with the TempData populated with the TempData from the ExceptionContext.Controller.<br/>
-    /// For Ajax requests, a <see cref="JsonResult"/> object is returned. The JSON structure of the <see cref="JsonResult"/> is defined in the Example section wit the Title "Ajax request JSON response structure"
-    /// <example>
-    /// <code language="json" title="Ajax request JSON response structure">
+    ///     Extends <see cref="System.Web.Mvc.HandleErrorAttribute" /> which represents an attribute that is used to handle an
+    ///     exception that is thrown by an action method.
+    ///     Adds support for custom exception logging and builds/returns the response based on the request type.<br />
+    ///     For standard requests, the application error <see cref="ViewResult" /> is returned with the TempData populated with
+    ///     the TempData from the ExceptionContext.Controller.<br />
+    ///     For Ajax requests, a <see cref="JsonResult" /> object is returned. The JSON structure of the
+    ///     <see cref="JsonResult" /> is defined in the Example section wit the Title "Ajax request JSON response structure"
+    ///     <example>
+    ///         <code language="json" title="Ajax request JSON response structure">
     /// <![CDATA[
     /// {
     ///     "Errors":
@@ -26,13 +29,19 @@ namespace Encompass.Mvc.Attributes
     /// }
     /// ]]>
     /// </code>
-    /// </example>
+    ///     </example>
     /// </summary>
     public class HandleErrorAttribute : System.Web.Mvc.HandleErrorAttribute
     {
+        #region fields
+
         private const string INTERNAL_SERVER_ERROR = "Internal Server Error";
         private const string RETURN_VALUE_KEY_DEFAULT = "HandleErrorReturnValue";
         private readonly string _returnValueKey;
+
+        #endregion
+
+        #region constructors
 
         public HandleErrorAttribute()
         {
@@ -45,13 +54,21 @@ namespace Encompass.Mvc.Attributes
             _returnValueKey = returnValueKey;
         }
 
+        #endregion
+
+        #region events
+
         /// <summary>
-        /// Event handlers for logging the exception
+        ///     Event handlers for logging the exception
         /// </summary>
         public static event EventHandler<HandleErrorEventArgs> LogException;
 
+        #endregion
+
+        #region methods
+
         /// <summary>
-        /// Called when an exception occurs.
+        ///     Called when an exception occurs.
         /// </summary>
         /// <param name="filterContext">The action-filter context.</param>
         public override void OnException(ExceptionContext filterContext)
@@ -91,7 +108,9 @@ namespace Encompass.Mvc.Attributes
 
                 if (filterContext.HttpContext.Request.IsAjaxRequest())
                 {
-                    var message = filterContext.Exception is UnauthorizedHttpException ? filterContext.Exception.Message : INTERNAL_SERVER_ERROR;
+                    var message = filterContext.Exception is UnauthorizedHttpException
+                                      ? filterContext.Exception.Message
+                                      : INTERNAL_SERVER_ERROR;
 
                     if (filterContext.Exception is UnauthorizedHttpException)
                     {
@@ -105,16 +124,26 @@ namespace Encompass.Mvc.Attributes
                     }
                 }
                 else
-                    filterContext.Result = new ViewResult { ViewName = View, MasterName = Master, ViewData = new ViewDataDictionary<HandleErrorInfo>(handleErrorInfo), TempData = filterContext.Controller.TempData };
+                {
+                    filterContext.Result = new ViewResult
+                                           {
+                                               ViewName = View,
+                                               MasterName = Master,
+                                               ViewData = new ViewDataDictionary<HandleErrorInfo>(handleErrorInfo),
+                                               TempData = filterContext.Controller.TempData
+                                           };
+                }
 
                 filterContext.ExceptionHandled = true;
                 filterContext.HttpContext.Response.Clear();
-                filterContext.HttpContext.Response.StatusCode = (new HttpException(null, exception)).GetHttpCode();
+                filterContext.HttpContext.Response.StatusCode = new HttpException(null, exception).GetHttpCode();
                 filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
             }
         }
 
         private void OnLogException(HandleErrorEventArgs handleErrorEventArgs) => LogException?.Invoke(this, handleErrorEventArgs);
+
+        #endregion
     }
 }
 

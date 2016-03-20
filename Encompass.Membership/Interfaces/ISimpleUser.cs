@@ -9,6 +9,8 @@ namespace Encompass.Membership.Interfaces
     /// </summary>
     public interface ISimpleUser
     {
+        #region properties
+
         /// <summary>
         ///     Email
         /// </summary>
@@ -43,5 +45,7 @@ namespace Encompass.Membership.Interfaces
         ///     Username
         /// </summary>
         string Username { get; set; }
+
+        #endregion
     }
 }
