@@ -93,7 +93,7 @@ namespace Encompass.Simple.Extensions
         ///     are only used when string value contains seperator values or group characters.
         /// </param>
         /// <returns>A concatonated string.</returns>
-        public static string GroupJoin(this IEnumerable<string> values, string seperator, char? groupStart, char? groupEnd, bool forceGrouping = true)
+        public static string GroupJoin(this IEnumerable<string> values, string seperator, char? groupStart, char? groupEnd, bool forceGrouping)
         {
             var s = IsNullOrEmpty(seperator)
                         ? Empty
@@ -105,13 +105,29 @@ namespace Encompass.Simple.Extensions
             var gs = groupStart.Value.ToString();
             var ge = groupEnd.Value.ToString();
 
+            if (forceGrouping)
+                return Join(s, values.Select(value => $"{gs}{EscapeQualifiers(value, gs, ge)}{ge}"));
+
+            var sArray = s.Select(c => c.ToString())
+                          .Union(new[] { gs, ge })
+                          .ToArray();
+
             return Join(s,
-                        forceGrouping
-                            ? values.Select(value => $"{gs}{EscapeQualifiers(value, gs, ge)}{ge}")
-                            : values.Select(value => value.ContainsAny(s, gs, ge)
-                                                         ? $"{gs}{EscapeQualifiers(value, gs, ge)}{ge}"
-                                                         : value));
+                        values.Select(value => value.ContainsAny(sArray)
+                                                   ? $"{gs}{EscapeQualifiers(value, gs, ge)}{ge}"
+                                                   : value));
         }
+
+        /// <summary>
+        ///     Concatonates the members of a constructed collection of type String using a seperator and grouping characters.
+        /// </summary>
+        /// <param name="values">The collection to concatonate.</param>
+        /// <param name="seperator">The string to use for seperation.</param>
+        /// <param name="groupStart">The character used to signifiy a group start.</param>
+        /// <param name="groupEnd">The character used to signify a group end.</param>
+        /// <returns>A concatonated string.</returns>
+        public static string GroupJoin(this IEnumerable<string> values, string seperator, char? groupStart, char? groupEnd)
+            => values.GroupJoin(seperator, groupStart, groupEnd, true);
 
         /// <summary>
         ///     Removes the middle of a string and replaces it with the string specified in the <paramref name="guts" /> param to
