@@ -12,6 +12,7 @@ using static System.StringComparison;
 using static System.Text.Encoding;
 using static System.Text.RegularExpressions.Regex;
 using static System.Text.RegularExpressions.RegexOptions;
+using static System.Web.HttpUtility;
 using static Encompass.Simple.Format.Html;
 using static Encompass.Simple.Is;
 
@@ -25,6 +26,29 @@ namespace Encompass.Simple.Extensions
     public static class StringExtensions
     {
         #region methods
+
+        /// <summary>
+        ///     Safely adds any url parameter to an existing url string
+        /// </summary>
+        /// <param name="url">The url to add a parameter to.</param>
+        /// <param name="param">The name of the parameter to add.</param>
+        /// <param name="value">The value to add for the parameter.</param>
+        /// <returns>Returns a url with the added parameter.</returns>
+        public static string AddUrlParameter(this string url, string param, string value)
+        {
+            //TODO: we need to verify url is an actual url, we need to add this check in the Is class
+            if (!AllNotNullAndNotWhiteSpace(url, param))
+                return url;
+
+            if (value.IsNullOrWhiteSpace())
+                value = Empty;
+
+            var uriBuilder = new UriBuilder(url);
+            var query = ParseQueryString(uriBuilder.Query);
+            query[param] = value;
+            uriBuilder.Query = query.ToString();
+            return uriBuilder.ToString();
+        }
 
         /// <summary>
         ///     Converts a camel cased string to words separated by spaces
@@ -747,7 +771,7 @@ namespace Encompass.Simple.Extensions
                 .ToArray();
         }
 
-        private static string EscapeQualifiers(string value, string q1, string q2)
+        static string EscapeQualifiers(string value, string q1, string q2)
         {
             return q1 == q2
                        ? value.Replace(q1, $"{q1}{q1}")
