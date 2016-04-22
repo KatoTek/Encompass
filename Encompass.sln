@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.MatchSync", "Encompass.MatchSync\Encompass.MatchSync.csproj", "{CA8C7A58-C3C0-484B-9355-DA4CE99A02B2}"
 EndProject
@@ -12,14 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Mvc", "Encompass.Mvc\Encompass.Mvc.csproj", "{916C77E9-8212-4449-B3A2-9BF090760EC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.Membership", "Encompass.Membership\Encompass.Membership.csproj", "{581699AC-0ED6-46E2-B192-32EFAADD8015}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{97F63D50-0BCC-4A9C-AE61-F959E001A4B6}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encompass.AutoMapper", "Encompass.AutoMapper\Encompass.AutoMapper.csproj", "{00DB9787-A94C-45F0-AEBD-FEE275C23FD7}"
 EndProject
