@@ -11,8 +11,8 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added the ability to extend the SimpleUser object by adding the ISimpleUser interface and changing the MembershipService to utilize the interface instead of strictly the SimpleUser object.  Support for the standard SimpleUser object is still present this just provides more flexibility.</releaseNotes>
-    <copyright>Copyright KatoTek 2015</copyright>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright KatoTek 2016</copyright>
     <tags>Membership</tags>
   </metadata>
 </package>

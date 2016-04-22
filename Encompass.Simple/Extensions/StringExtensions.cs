@@ -120,8 +120,8 @@ namespace Encompass.Simple.Extensions
                         ? Empty
                         : seperator;
 
-            if (s.ContainsAny(new[] { groupStart, groupEnd }.Where(g => g != null)
-                                                            .Select(g => g.Value)
+            if (s.ContainsAny(new[] { groupStart, groupEnd }.Where(_ => _ != null)
+                                                            .Select(_ => _.Value)
                                                             .ToArray()))
             {
                 groupStart = null;
@@ -161,7 +161,8 @@ namespace Encompass.Simple.Extensions
                         ? Empty
                         : seperator;
 
-            if (s.ContainsAny(groupStart, groupEnd))
+            if (s.ContainsAny(new[] { groupStart, groupEnd }.Where(_ => !IsNullOrEmpty(_))
+                                                            .ToArray()))
             {
                 groupStart = null;
                 groupEnd = null;
