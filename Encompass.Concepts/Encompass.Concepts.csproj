@@ -45,8 +45,8 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Encompass.Simple, Version=7.5.15.1019, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\KatoTek.Encompass.Simple.7.5.15.1019\lib\net40\Encompass.Simple.dll</HintPath>
+    <Reference Include="Encompass.Simple, Version=8.0.16.421, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KatoTek.Encompass.Simple.8.0.16.421\lib\net40\Encompass.Simple.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

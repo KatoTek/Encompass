@@ -494,14 +494,14 @@ namespace Encompass.Simple
         /// </summary>
         /// <param name="obj">Object to check.</param>
         /// <returns>True when the argument is not null.</returns>
-        private static bool NotNull(object obj) => !Null(obj);
+        static bool NotNull(object obj) => !Null(obj);
 
         /// <summary>
         ///     Checks that the argument is null.
         /// </summary>
         /// <param name="obj">Object to check.</param>
         /// <returns>True when the argument is null.</returns>
-        private static bool Null(object obj) => obj == null;
+        static bool Null(object obj) => obj == null;
 
         #endregion
     }

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Encompass.Simple.Format;
-using Microsoft.VisualBasic.FileIO;
 using static System.Enum;
 using static System.String;
 using static System.StringComparison;
-using static System.Text.Encoding;
 using static System.Text.RegularExpressions.Regex;
 using static System.Text.RegularExpressions.RegexOptions;
 using static Encompass.Simple.Format.Html;
@@ -82,7 +79,7 @@ namespace Encompass.Simple.Extensions
         }
 
         /// <summary>
-        ///     Concatonates the members of a constructed collection of type String using a seperator and grouping characters.
+        ///     Concatonates the members of a String collection using a seperator and grouping characters.
         /// </summary>
         /// <param name="values">The collection to concatonate.</param>
         /// <param name="seperator">The string to use for seperation.</param>
@@ -98,6 +95,14 @@ namespace Encompass.Simple.Extensions
             var s = IsNullOrEmpty(seperator)
                         ? Empty
                         : seperator;
+
+            if (s.ContainsAny(new[] { groupStart, groupEnd }.Where(g => g != null)
+                                                            .Select(g => g.Value)
+                                                            .ToArray()))
+            {
+                groupStart = null;
+                groupEnd = null;
+            }
 
             if (groupStart == null || groupEnd == null)
                 return Join(s, values.Where(item => IsNullOrEmpty(s) || !item.Contains(s)));
@@ -119,7 +124,33 @@ namespace Encompass.Simple.Extensions
         }
 
         /// <summary>
-        ///     Concatonates the members of a constructed collection of type String using a seperator and grouping characters.
+        ///     Concatonates the members of a String collection using a seperator and groupings.
+        /// </summary>
+        /// <param name="values">The collection to concatonate.</param>
+        /// <param name="seperator">The string to use for seperation.</param>
+        /// <param name="groupStart">The string used to signifiy a group start.</param>
+        /// <param name="groupEnd">The string used to signify a group end.</param>
+        /// <returns>A concatonated string.</returns>
+        public static string GroupJoin(this IEnumerable<string> values, string seperator, string groupStart, string groupEnd)
+        {
+            var s = IsNullOrEmpty(seperator)
+                        ? Empty
+                        : seperator;
+
+            if (s.ContainsAny(groupStart, groupEnd))
+            {
+                groupStart = null;
+                groupEnd = null;
+            }
+
+            if (IsNullOrEmpty(groupStart) || IsNullOrEmpty(groupEnd))
+                return Join(s, values.Where(item => IsNullOrEmpty(s) || !item.Contains(s)));
+
+            return Join(s, values.Select(value => $"{groupStart}{EscapeQualifiers(value, groupStart, groupEnd)}{groupEnd}"));
+        }
+
+        /// <summary>
+        ///     Concatonates the members of a String collection using a seperator and grouping characters.
         /// </summary>
         /// <param name="values">The collection to concatonate.</param>
         /// <param name="seperator">The string to use for seperation.</param>
@@ -159,9 +190,7 @@ namespace Encompass.Simple.Extensions
                 length++;
 
             var half = length/2;
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"{source.Substring(0, half)}{guts}{source.Substring(source.Length - half, half)}");
-            return stringBuilder.ToString();
+            return $"{source.Substring(0, half)}{guts}{source.Substring(source.Length - half, half)}";
         }
 
         /// <summary>
@@ -535,29 +564,17 @@ namespace Encompass.Simple.Extensions
                                                                                                ? value.Substring(trimString.Length, value.Length - trimString.Length)
                                                                                                : value;
 
-        /// <summary>
-        ///     Takes a string and separates it into segments using a comma as the delimiter and returns it as an array
-        /// </summary>
-        /// <param name="source">The string to parse</param>
-        /// <returns>An array of strings</returns>
-        public static string[] ParseCsvRow(this string source) => source.ParseCsvRow(new[] { "," });
+        /// <inheritdoc cref="Words(string)" />
+        /// <remarks>Use the method <see cref="Words(string)" /> instead.</remarks>
+        [Obsolete("Use method Words instead.", false)]
+        public static string[] ParseCsvRow(this string source) => source.Words(new[] { ',' });
 
-        /// <summary>
-        ///     Takes a string and separates it into segments using the specified delimiters and returns it as an array
-        /// </summary>
-        /// <param name="source">The string to parse</param>
-        /// <param name="delimiters">The delimeters to use to break up the string</param>
-        /// <returns>An array of strings</returns>
+        /// <inheritdoc cref="Words(string, IEnumerable{char})" />
+        /// <remarks>Use the method <see cref="Words(string, IEnumerable{char})" /> instead.</remarks>
+        [Obsolete("Use method Words instead.", true)]
         public static string[] ParseCsvRow(this string source, string[] delimiters)
         {
-            using (var parser = new TextFieldParser(new MemoryStream(UTF8.GetBytes(source))))
-            {
-                parser.Delimiters = delimiters;
-                while (!parser.EndOfData)
-                    return parser.ReadFields();
-            }
-
-            return new string[] { };
+            throw new NotSupportedException();
         }
 
         /// <summary>
@@ -689,6 +706,21 @@ namespace Encompass.Simple.Extensions
         }
 
         /// <summary>
+        ///     Returns an array of string words defined by the comma delimiter character.
+        /// </summary>
+        /// <param name="value">The string to examine.</param>
+        /// <returns>An array of string words.</returns>
+        public static string[] Words(this string value) => value.Words(new[] { ',' });
+
+        /// <summary>
+        ///     Returns an array of string words defined by the comma delimiter character.
+        /// </summary>
+        /// <param name="value">The string to examine.</param>
+        /// <param name="qualifier">The qualifier character used to define string words.</param>
+        /// <returns>An array of string words.</returns>
+        public static string[] Words(this string value, char? qualifier) => value.Words(qualifier, new[] { ',' });
+
+        /// <summary>
         ///     Returns an array of string words defined by a given set of delimiter characters.
         /// </summary>
         /// <param name="value">The string to examine.</param>
@@ -747,7 +779,7 @@ namespace Encompass.Simple.Extensions
                 .ToArray();
         }
 
-        private static string EscapeQualifiers(string value, string q1, string q2)
+        static string EscapeQualifiers(string value, string q1, string q2)
         {
             return q1 == q2
                        ? value.Replace(q1, $"{q1}{q1}")

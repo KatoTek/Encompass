@@ -50,11 +50,27 @@ namespace Encompass.Simple
         ///     Zero <paramref name="a" /> has the same position in the sort order as <paramref name="b" />.
         ///     Greater than zero <paramref name="a" /> follows <paramref name="b" />.
         /// </returns>
-        public static int Strings(string a, string b) => a == null
-                                                             ? b == null
-                                                                   ? 0
-                                                                   : -1
-                                                             : Compare(a, b, Ordinal);
+        public static int Strings(string a, string b) => Strings(a, b, Ordinal);
+
+        /// <summary>
+        ///     Compares two strings factoring in null values
+        /// </summary>
+        /// <param name="a">The string to compare against</param>
+        /// <param name="b">The string to compare to</param>
+        /// <param name="stringComparison">The StringComparison to use.</param>
+        /// <returns>
+        ///     A 32-bit signed integer that indicates whether this instance precedes,
+        ///     follows, or appears in the same position in the sort order as the <paramref name="a" />
+        ///     parameter.Value Condition
+        ///     Less than zero <paramref name="a" /> precedes <paramref name="b" />.-or- <paramref name="b" /> is null.
+        ///     Zero <paramref name="a" /> has the same position in the sort order as <paramref name="b" />.
+        ///     Greater than zero <paramref name="a" /> follows <paramref name="b" />.
+        /// </returns>
+        public static int Strings(string a, string b, StringComparison stringComparison) => a == null
+                                                                                                ? b == null
+                                                                                                      ? 0
+                                                                                                      : -1
+                                                                                                : Compare(a, b, stringComparison);
 
         #endregion
     }

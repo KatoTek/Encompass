@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using static System.Environment;
 using static System.Net.WebUtility;
+using static System.Reflection.Assembly;
+using static System.String;
 using static System.StringSplitOptions;
 
 namespace Encompass.Simple.Format
@@ -16,10 +17,10 @@ namespace Encompass.Simple.Format
     {
         #region fields
 
-        private const string EXCEPTION_TABLE_HTML_FILE = "Encompass.Simple.Html.ExceptionTable.html";
-        private const string HTML_BREAK_TAG = "<br />";
-        private const string HTML_PARAGRAPH_CLOSING_TAG = "</p>";
-        private const string HTML_PARAGRAPH_OPENING_TAG = "<p>";
+        const string EXCEPTION_TABLE_HTML_FILE = "Encompass.Simple.Html.ExceptionTable.html";
+        const string HTML_BREAK_TAG = "<br />";
+        const string HTML_PARAGRAPH_CLOSING_TAG = "</p>";
+        const string HTML_PARAGRAPH_OPENING_TAG = "<p>";
 
         #endregion
 
@@ -54,8 +55,8 @@ namespace Encompass.Simple.Format
         /// <returns>The Exception as a string of html</returns>
         public static string Table(Exception exception)
         {
-            using (var stream = Assembly.GetExecutingAssembly()
-                                        .GetManifestResourceStream(EXCEPTION_TABLE_HTML_FILE))
+            using (var stream = GetExecutingAssembly()
+                .GetManifestResourceStream(EXCEPTION_TABLE_HTML_FILE))
             {
                 if (stream == null)
                     return null;
@@ -63,7 +64,7 @@ namespace Encompass.Simple.Format
                 using (var reader = new StreamReader(stream))
                 {
                     return exception == null
-                               ? string.Empty
+                               ? Empty
                                : string.Format(reader.ReadToEnd()
                                                      .Trim(),
                                                Breaks(exception.GetType()
